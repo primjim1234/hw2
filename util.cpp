@@ -11,28 +11,25 @@ std::string convToLower(std::string src)
     return src;
 }
 
-/** Complete the code to convert a string containing a rawWord
-    to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
-
-
-
-
-
-
-
-
-
-
+    set<string> result;
+    string temp;
+    for(size_t i = 0; i <= rawWords.size(); i++){
+        char c = (i < rawWords.size() ? rawWords[i] : ' ');
+        if(isalnum(c)){
+            temp += static_cast<char>(tolower(c));
+        }
+        else{
+            if(temp.size() >= 2){
+                result.insert(temp);
+            }
+            temp.clear();
+        }
+    }
+    return result;
 }
 
-/**************************************************
- * COMPLETED - You may use the following functions
- **************************************************/
-
-// Used from http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
-// trim from start
 std::string &ltrim(std::string &s) {
     s.erase(s.begin(), 
 	    std::find_if(s.begin(), 
@@ -41,7 +38,6 @@ std::string &ltrim(std::string &s) {
     return s;
 }
 
-// trim from end
 std::string &rtrim(std::string &s) {
     s.erase(
 	    std::find_if(s.rbegin(), 
@@ -51,7 +47,6 @@ std::string &rtrim(std::string &s) {
     return s;
 }
 
-// trim from both ends
 std::string &trim(std::string &s) {
     return ltrim(rtrim(s));
 }
